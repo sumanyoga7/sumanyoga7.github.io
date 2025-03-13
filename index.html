@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. T.Y. Suman - Environmental Researcher</title>
+    <style>
+        :root {
+            --primary-color: #1e6091;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            margin-bottom: 1rem;
+            background-color: var(--accent-color);
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .profile-details {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .email {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .email:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-container {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            padding: 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .research-tag {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .timeline {
+            margin-top: 1.5rem;
+        }
+        
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--primary-color);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .timeline-institution {
+            font-weight: 500;
+        }
+        
+        .timeline-description {
+            margin-top: 0.3rem;
+            color: #666;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skill-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .publications {
+            margin-top: 1.5rem;
+        }
+        
+        .pub-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pub-stat {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .pub-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pub-label {
+            font-size: 0.9rem;
+        }
+        
+        .featured-pubs {
+            margin-top: 1.5rem;
+        }
+        
+        .publication {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publication-title {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .publication-authors {
+            font-style: italic;
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .publication-journal {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .awards-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .awards-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .awards-list li:before {
+            content: "🏆";
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                padding: 0.5rem;
+            }
+            
+            .pub-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <img src="/api/placeholder/150/150" alt="Dr. T.Y. Suman" class="profile-image">
+            <h1 class="profile-name">Dr. T.Y. Suman</h1>
+            <p class="profile-title">Post-doctoral Fellow - Environmental Researcher</p>
+            <p class="profile-details">Fisheries Science Institute, Chonnam National University, Republic of Korea</p>
+            <p><a href="mailto:sumancas2010@gmail.com" class="email">sumancas2010@gmail.com</a> | <a href="mailto:sumanyoga7@chonnam.ac.kr" class="email">sumanyoga7@chonnam.ac.kr</a></p>
+        </div>
+    </header>
+    
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am an environmental researcher specializing in environmental monitoring, metabarcoding, and molecular toxicology. My work focuses on understanding environmental pollutants and their effects on aquatic ecosystems, with expertise in biomaterials for environmental applications.</p>
+            <p>As a post-doctoral fellow at Chonnam National University's Fisheries Science Institute, I conduct research on environmental science with a focus on aquatic toxicology and sustainable solutions for environmental challenges.</p>
+            <p>With over 52 publications in international journals, my research has contributed to understanding the impacts of various pollutants, including microplastics, heavy metals, and emerging contaminants on marine and freshwater ecosystems.</p>
+            
+            <div class="research-interests">
+                <span class="research-tag">Environmental Monitoring</span>
+                <span class="research-tag">Metabarcoding</span>
+                <span class="research-tag">Environmental Science</span>
+                <span class="research-tag">Molecular Toxicology</span>
+                <span class="research-tag">Biomaterials</span>
+                <span class="research-tag">Microplastics</span>
+                <span class="research-tag">Nanotechnology</span>
+            </div>
+        </section>
+        
+        <section id="research">
+            <h2>Research Focus</h2>
+            <p>My research investigates the intersection of environmental pollution, ecotoxicology, and sustainable solutions. Key areas include:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Environmental Monitoring & Toxicology</h3>
+                    <p>Investigating the impacts of pollutants on aquatic ecosystems, with a focus on heavy metals, microplastics, and emerging contaminants. Using advanced analytical techniques to monitor environmental quality and assess ecological risks.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Biofabricated Nanomaterials</h3>
+                    <p>Developing eco-friendly nanoparticles and assessing their potential in environmental remediation, antimicrobial applications, and as alternatives to conventional chemicals in various applications.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Molecular Responses to Environmental Stressors</h3>
+                    <p>Studying cellular and molecular responses to environmental contaminants in model organisms, including zebrafish and aquatic invertebrates, to understand toxicity mechanisms and develop biomarkers of exposure.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Metabarcoding & Environmental DNA</h3>
+                    <p>Applying molecular techniques to monitor biodiversity and ecosystem health, using DNA-based approaches to understand trophic interactions and community composition in aquatic environments.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">February 2024 - Present</div>
+                    <div class="timeline-institution">Post-Doctoral Researcher, Chonnam National University</div>
+                    <div class="timeline-description">Conducting research at the Fisheries Science Institute focusing on environmental monitoring and ecotoxicology.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2021 - February 2024</div>
+                    <div class="timeline-institution">Post-Doctoral Researcher, Changwon National University</div>
+                    <div class="timeline-description">Investigated environmental impacts of pollutants through transcriptome analysis and computational approaches.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">December 2018 - March 2021</div>
+                    <div class="timeline-institution">Post-Doctoral Researcher, Henan Normal University</div>
+                    <div class="timeline-description">Researched microplastics toxicity and developed biofabricated nanoparticles for environmental applications.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">June 2017 - December 2018</div>
+                    <div class="timeline-institution">Assistant Professor (Research), Centre for Ocean Research, Sathyabama University</div>
+                    <div class="timeline-description">Led research on marine environmental monitoring and co-managed the DST-FIST Programme in Earth Sciences.</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 2017</div>
+                    <div class="timeline-institution">Doctor of Philosophy in Life Science, Sathyabama University</div>
+                    <div class="timeline-description">Supervisor: Dr. S.R. Radhika Rajasree</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2009 - 2010</div>
+                    <div class="timeline-institution">Bachelor of Education in Biology (First Class), Vidhyalakshmi Group of Educational Institutions</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2007 - 2009</div>
+                    <div class="timeline-institution">Master of Science in Biotechnology (First Class), C.Abdul Hakeem College Of Arts And Science, Thiruvalluvar University</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2004 - 2007</div>
+                    <div class="timeline-institution">Bachelor of Science in Plant Biology and Biotechnology (Second Class), Government Thirumagal Mills College, Thiruvalluvar University</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Analytical Techniques</h3>
+                    <ul class="skill-list">
+                        <li>ICPMS maintenance and method development</li>
+                        <li>Qualitative and quantitative analysis</li>
+                        <li>Method validation</li>
+                        <li>Soxhlet extraction</li>
+                        <li>Rotary evaporation</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Toxicology</h3>
+                    <ul class="skill-list">
+                        <li>Cell culture & maintenance</li>
+                        <li>Zebrafish and aquatic zooplankton culturing</li>
+                        <li>Experimental animal handling and histology</li>
+                        <li>Standard and non-standard toxicity testing</li>
+                        <li>Flow cytometry analysis and interpretation</li>
+                        <li>Oxidative stress analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Molecular Biology</h3>
+                    <ul class="skill-list">
+                        <li>DNA isolation</li>
+                        <li>RNA isolation</li>
+                        <li>SDS-PAGE and Western blot</li>
+                        <li>Primer designing for qPCR</li>
+                        <li>qPCR</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="publications">
+            <h2>Research Publications</h2>
+            
+            <div class="pub-stats">
+                <div class="pub-stat">
+                    <div class="pub-number">52</div>
+                    <div class="pub-label">Total Publications</div>
+                </div>
+                
+                <div class="pub-stat">
+                    <div class="pub-number">188.4</div>
+                    <div class="pub-label">Cumulative Impact Factor</div>
+                </div>
+                
+                <div class="pub-stat">
+                    <div class="pub-number">22</div>
+                    <div class="pub-label">h-index</div>
+                </div>
+                
+                <div class="pub-stat">
+                    <div class="pub-number">12.2</div>
+                    <div class="pub-label">Highest Impact Factor</div>
+                </div>
+            </div>
+            
+            <h3>Featured Publications</h3>
+            <div class="featured-pubs">
+                <div class="publication">
+                    <div class="publication-title">Current understanding of human bioaccumulation patterns and health effects of exposure to perfluorooctane sulfonate (PFOS)</div>
+                    <div class="publication-authors">Suman, T.Y. and Kwak, I.S., 2025</div>
+                    <div class="publication-journal">Journal of Hazardous Materials, p.137249. Impact factor: 12.2 (Q1)</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Unveiling the environmental impact of tire wear particles and the associated contaminants: A comprehensive review of environmental and health risk</div>
+                    <div class="publication-authors">Suman, T.Y., Daeho, K., Heewon, J., Shen, K. and Jeon, J., 2024</div>
+                    <div class="publication-journal">Journal of Hazardous Materials, p.136155. Impact factor: 12.2 (Q1)</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Acute and chronic effects of polystyrene microplastics on brine shrimp: First evidence highlighting the molecular mechanism through transcriptome analysis</div>
+                    <div class="publication-authors">Suman, T.Y., Jia, P.P., Li, W.G., Junaid, M., Xin, G.Y., Wang, Y. and Pei, D.S., 2020</div>
+                    <div class="publication-journal">Journal of Hazardous Materials, 400, p.123220. Impact factor: 12.2 (Q1)</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Micro (nano) plastics in commercial foods: A review of their characterization and potential hazards to human health</div>
+                    <div class="publication-authors">Yoganandham, S.T., Hamid, N., Muhammad, J., Duan, J.J. and Pei, D.S., 2023</div>
+                    <div class="publication-journal">Environmental Research, p.116858. Impact factor: 7.7 (Q1)</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Characterization of petroleum-based plastics and their absorbed trace metals from the sediments of the Marina Beach in Chennai, India</div>
+                    <div class="publication-authors">Suman, T.Y., Li, W.G., Alif, S., Faris, V.R.P., Amarnath, D.J., Ma, J.G. and Pei, D.S., 2020</div>
+                    <div class="publication-journal">Environmental Sciences Europe, 32, pp.1-10. Impact factor: 6.00 (Q1)</div>
+                </div>
+            </div>
+            
+            <p>
+                <strong>Publication Quality:</strong><br>
+                Q1 journals: 18 publications (last 5 years)<br>
+                Q2 journals: 14 publications (last 5 years)<br>
+                Q3 journals: 1 publication (last 5 years)<br>
+                Books: 1 | Book Chapters: 9 | Patents: 1
+            </p>
+            
+            <p>View full publication list on: 
+                <a href="https://scholar.google.com/citations?user=PLACEHOLDER" target="_blank">Google Scholar</a> | 
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=PLACEHOLDER" target="_blank">Scopus</a> | 
+                <a href="https://www.researchgate.net/profile/PLACEHOLDER" target="_blank">ResearchGate</a> | 
+                <a href="https://orcid.org/0000-0003-0975-9091" target="_blank">ORCID</a>
+            </p>
+        </section>
+        
+        <section id="awards">
+            <h2>Awards and Honors</h2>
+            
+            <ul class="awards-list">
+                <li>Recognized as one of the world's top 2% scientists in the field of biotechnology and environmental science in the 2023 ranking by Stanford University.</li>
+                <li>Colonel DR. JEPPIAAR DOCTORAL EXCELLENCE AWARD for Ph.D. research work.</li>
+                <li>Article "The Green synthesis of gold nanoparticles using an aqueous root extract of Morinda citrifolia L." listed among top 25 most downloaded articles in Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy.</li>
+            </ul>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Information</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-method">
+                    <span class="contact-icon">📧</span>
+                    <span>sumancas2010@gmail.com</span>
+                </div>
+                
+                <div class="contact-method">
+                    <span class="contact-icon">📧</span>
+                    <span>sumanyoga7@chonnam.ac.kr</span>
+                </div>
+                
+                <div class="contact-method">
+                    <span class="contact-icon">🏢</span>
+                    <span>Fisheries Science Institute, Chonnam National University, Republic of Korea</span>
+                </div>
+                
+                <div class="contact-method">
+                    <span class="contact-icon">🔍</span>
+                    <span>ORCID: 0000-0003-0975-9091</span>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 2rem;">International Collaborations</h3>
+            <ul class="skill-list">
+                <li>College of Life Science, Henan Normal University, China</li>
+                <li>Chongqing Medical University, Chongqing, China</li>
+                <li>Department of Environmental Engineering, Changwon National University, Changwon, Republic of Korea</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Dr. T.Y. Suman. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
